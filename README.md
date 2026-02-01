@@ -2,6 +2,7 @@
 Ez az oldal a Gondviselés Gyógyszertár hivatalos, egyszerűsített weboldala.
 
 Ha huzamosabb ideig nem frissül az oldal, valószínüleg **karbantartás zajlik**, vagy valami **hiba lépett fel**.
+Kérjük vegye fel a kapcsolatot az alábbi telefonszámon: +36 76 591 020
 
 ## 🌐 Élő weboldal
 Az oldal megtekintésével bróbálkozzon újra az alábbi linken:
