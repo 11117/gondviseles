@@ -1,5 +1,5 @@
 # Gondviselés Gyógyszertár - Orgovány
-Ez a projekt a **Gondviselés Gyógyszertár** hivatalos, egyszerűsített bemutatkozó weboldala.
+Ez a projekt a **Gondviselés Gyógyszertár** hivatalos, egyszerűsített weboldala.
 
 Ha huzamosabb ideig nem frissül az oldal, valószínüleg **karbantartás zajlik**, vagy valami **hiba lépett fel**.
 
