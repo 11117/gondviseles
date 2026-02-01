@@ -4,7 +4,7 @@ Ez a projekt a **Gondviselés Gyógyszertár** hivatalos, egyszerűsített webol
 Ha huzamosabb ideig nem frissül az oldal, valószínüleg **karbantartás zajlik**, vagy valami **hiba lépett fel**.
 
 ## 🌐 Élő weboldal
-Az oldal megtekinthető az alábbi linken:
+Az oldal megtekintésével bróbálkozzon újra az alábbi linken:
 [https://11117.github.io/gondviseles/](https://11117.github.io/gondviseles/)
 
 ## 🛠 Technológiai részletek
