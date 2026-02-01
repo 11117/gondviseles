@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gondviselés Gyógyszertár - Orgovány</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* --- ALAPOK --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            width: 100%; overflow-x: hidden; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            line-height: 1.6; background-color: #fff;
+            scroll-behavior: smooth;
+        }
+        body { padding-top: 60px; }
+
+        /* --- NAVIGÁCIÓ --- */
+        nav {
+            background-color: #1a1a1a; color: white;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; height: 60px; position: fixed;
+            top: 0; left: 0; width: 100%; z-index: 10000;
+        }
+        .logo { font-weight: bold; color: white; text-decoration: none; font-size: 1.1rem; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: #4CAF50; }
+        .menu-toggle { display: none; font-size: 1.5rem; color: white; cursor: pointer; }
+        #check { display: none; }
+
+        /* --- HERO --- */
+        .hero {
+            height: calc(100vh - 60px); 
+            height: calc(100svh - 60px); /* Safari iPhone 16 Pro Fix */
+            width: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 20px; position: relative;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://i.ibb.co/G4VhqZVY/20250731-141420.jpg') no-repeat center center/cover;
+            background-color: #1b4d3e;
+        }
+        .hero h1 { font-size: 2.8rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+
+        /* --- LEFELE NYÍL --- */
+        .scroll-down {
+            position: absolute; 
+            bottom: 60px; 
+            left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center;
+            color: white; text-decoration: none; transition: 0.3s;
+            cursor: pointer; z-index: 5;
+        }
+        .scroll-down:hover { opacity: 0.8; }
+        .scroll-down span { 
+            font-size: 1.1rem; 
+            margin-bottom: 10px; 
+            font-weight: 600; 
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+        .scroll-down i { font-size: 2.2rem; animation: bounce 2s infinite; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* --- SZEKCIÓK --- */
+        section { padding: 80px 5%; width: 100%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: 2.2rem; margin-bottom: 25px; text-align: center; }
+
+        /* --- TÉRKÉP --- */
+        #terkep-szekcio { background-color: #f8f9fa; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; }
+        .map-frame-fixed {
+            width: 100%; max-width: 1000px; height: 450px;
+            border-radius: 15px; overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); position: relative;
+        }
+        .map-frame-fixed iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+        /* --- KAPCSOLAT --- */
+        .contact-wrapper { display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
+        .contact-item { display: flex; flex-direction: column; align-items: center; width: 220px; text-align: center; }
+        .contact-item p { font-size: 0.9rem; margin-bottom: 15px; min-height: 3em; line-height: 1.3; }
+        .contact-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 65px; height: 65px; color: white; font-size: 28px;
+            border-radius: 15px; text-decoration: none; transition: transform 0.3s, filter 0.3s;
+            margin-bottom: 10px;
+        }
+        .contact-btn:hover { transform: scale(1.1); filter: brightness(1.1); }
+        .fb-color { background-color: #1877F2; }
+        .mail-color { background-color: #EA4335; }
+        .phone-color { background-color: #25D366; }
+        .contact-subtext { font-size: 0.85rem; color: #666; font-weight: 500; }
+
+        /* --- SÜTI ÉS MODAL --- */
+        #cookie-banner {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 500px; background: #1a1a1a; color: white;
+            padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            z-index: 11000; display: none; text-align: center;
+        }
+        .cookie-btns { margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .btn-accept { background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .btn-info { background: transparent; color: #bbb; border: 1px solid #444; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+        .modal { display: none; position: fixed; z-index: 12000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
+        .modal-content { background-color: white; margin: 10% auto; padding: 30px; width: 85%; max-width: 700px; border-radius: 15px; max-height: 70vh; overflow-y: auto; color: #333; }
+        .close-modal { float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+
+        /* --- MOBIL NÉZET --- */
+        @media screen and (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 60px; left: -100%; width: 100%; height: calc(100vh - 60px);
+                background-color: #1a1a1a; flex-direction: column; align-items: center; transition: 0.5s; padding-top: 50px;
+            }
+            .nav-links li { margin: 20px 0; }
+            #check:checked ~ .nav-links { left: 0; }
+            .map-frame-fixed { height: 350px; }
+            .hero h1 { font-size: 2rem; }
+            .scroll-down { bottom: 80px; }
+            .scroll-down span { font-size: 0.9rem; }
+            .contact-wrapper { gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Gondviselés Gyógyszertár</a>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu-toggle"><i class="fas fa-bars"></i></label>
+        <ul class="nav-links">
+            <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+            <li><a href="#terkep-szekcio">Térkép</a></li>
+            <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Gondviselés Gyógyszertár</h1>
+        <p>Orgovány, Kossuth Lajos u. 65.</p>
+        
+        <a href="#szolgaltatasok" class="scroll-down">
+            <span>Görgessen a részletekért</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
+
+    <section id="szolgaltatasok">
+        <h2 class="section-title">Szolgáltatásaink</h2>
+        <p>Nagy munkatapasztalattal rendelkező kollégáink nyitvatartási időben szakszerű tanácsadással és széleskörű gyógyszerellátással igyekeznek kiszolgálni az orgoványi gyógyszertárba érkezőket.</p>
+    </section>
+
+    <div id="terkep-szekcio">
+        <h2 class="section-title">Itt talál meg minket</h2>
+        <div class="map-frame-fixed">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2740.354165518177!2d19.462886476839257!3d46.70880157112028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4743cf23c7c7f717%3A0x225c909c04ee2582!2zR29uZHZpc2Vsw6lzIEd5w7ZneXN6ZXJ0w6Fy!5e0!3m2!1shu!2shu!4v1707000000000!5m2!1shu!2shu5" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <section id="kapcsolat">
+        <h2 class="section-title">Kapcsolat</h2>
+        <div class="contact-wrapper">
+            <div class="contact-item">
+                <p>Az aktuális híreinkért kövessen Facebookon!</p>
+                <a href="https://www.facebook.com/gondviselesgyogyszertar/" target="_blank" class="contact-btn fb-color">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+
+            <div class="contact-item">
+                <p>Kérdése van? Hívjon minket bizalommal!</p>
+                <a href="tel:+3676591020" class="contact-btn phone-color">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <span class="contact-subtext">+36 76 591 020</span>
+            </div>
+            
+            <div class="contact-item">
+                <p>Keressen minket bizalommal e-mailben!</p>
+                <a href="mailto:gyogyszertar76@gmail.com?subject=Webes%20kapcsolatfelv%C3%A9tel" class="contact-btn mail-color">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <span class="contact-subtext">gyogyszertar76@gmail.com</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="cookie-banner">
+        <p style="font-size: 0.9rem;">Weboldalunk a működéshez elengedhetetlen (GDPR 6. cikk (1) f) és a Google Térkép funkcionális sütijeit használja. Az oldal használatával Ön ezt tudomásul veszi.</p>
+        <div class="cookie-btns">
+            <button class="btn-accept" id="accept-cookies">Értem és elfogadom</button>
+            <button class="btn-info" id="open-policy">Részletes tájékoztató</button>
+        </div>
+    </div>
+
+    <div id="policy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">×</span>
+            <h2 style="margin-bottom: 20px; text-align: center;">Adatkezelési Tájékoztató</h2>
+            <div style="font-size: 0.9rem; text-align: left;">
+                <p><strong>1. Adatkezelő:</strong> Gondviselés Gyógyszertár (6077 Orgovány, Kossuth Lajos u. 65.)</p><br>
+                <p><strong>2. Sütik (Cookies) használata:</strong> Weboldalunk technikai és funkcionális sütiket használ a biztonságos böngészéshez és a Google Maps megjelenítéséhez.</p><br>
+                <p><strong>3. Jogalap:</strong> Az adatkezelés jogalapja a 2003. évi C. törvény 155. § (4) bekezdése és a GDPR 6. cikk (1) bekezdés f) pontja.</p><br>
+                <p><strong>4. Kapcsolat:</strong> Az e-mail küldése és telefonhívás során megadott adatait kizárólag a válaszadáshoz használjuk fel.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const COOKIE_VERSION = "2"; 
+        const banner = document.getElementById('cookie-banner');
+        const modal = document.getElementById('policy-modal');
+        const acceptBtn = document.getElementById('accept-cookies');
+        const checkbox = document.getElementById('check');
+
+        if (localStorage.getItem('cookieVersion') !== COOKIE_VERSION) {
+            banner.style.display = 'block';
+        }
+
+        acceptBtn.onclick = () => {
+            localStorage.setItem('cookieVersion', COOKIE_VERSION);
+            banner.style.display = 'none';
+        };
+
+        document.getElementById('open-policy').onclick = () => { modal.style.display = 'block'; };
+        document.getElementById('close-modal').onclick = () => { modal.style.display = 'none'; };
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; };
+
+        document.querySelectorAll('.nav-links a, .logo, .scroll-down').forEach(link => {
+            link.onclick = () => { checkbox.checked = false; };
+        });
+    </script>
+</body>
+</html>
