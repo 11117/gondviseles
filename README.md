@@ -1,81 +1,20 @@
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gondviselés Gyógyszertár - Orgovány</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { overflow-x: hidden; width: 100%; font-family: 'Segoe UI', Arial, sans-serif; background-color: #fff; }
-        body { padding-top: 60px; }
-        nav { background-color: #1a1a1a; color: white; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; height: 60px; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; }
-        .logo { font-size: 1rem; font-weight: bold; color: white; text-decoration: none; }
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li { margin-left: 20px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; }
-        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
-        .hero { height: 60vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/G4VhqZVY/20250731-141420.jpg') no-repeat center center/cover; background-color: #1b4d3e; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        section { padding: 60px 5%; max-width: 1100px; margin: 0 auto; text-align: center; }
-        .section-title { font-size: 2rem; margin-bottom: 25px; color: #1a1a1a; }
-        #terkep-szekcio { background-color: #f8f9fa; width: 100%; padding: 60px 0; }
-        .map-container { width: 90%; max-width: 850px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); background-color: #eee; line-height: 0; }
-        .map-container iframe { width: 100%; height: 400px; border: 0; }
-        .address-text { margin-top: 20px; font-weight: 600; font-size: 1.1rem; text-align: center; }
-        .facebook-link { display: inline-flex; align-items: center; justify-content: center; width: 65px; height: 65px; background-color: #1877F2; color: white; font-size: 32px; border-radius: 15px; text-decoration: none; margin-top: 20px; }
-        @media screen and (max-width: 768px) {
-            .hamburger { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; right: 0; background-color: #1a1a1a; width: 100%; padding: 20px 0; }
-            .nav-links.active { display: flex; }
-            .nav-links li { margin: 15px 0; margin-left: 0; }
-            .hero h1 { font-size: 1.8rem; }
-            .map-container iframe { height: 300px; }
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="#" class="logo">Gondviselés Gyógyszertár</a>
-        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <ul class="nav-links" id="menuList">
-            <li><a href="#szolgaltatasok" onclick="toggleMenu()">Szolgáltatások</a></li>
-            <li><a href="#rolunk" onclick="toggleMenu()">Rólunk</a></li>
-            <li><a href="#terkep-szekcio" onclick="toggleMenu()">Térkép</a></li>
-            <li><a href="#kapcsolat" onclick="toggleMenu()">Kapcsolat</a></li>
-        </ul>
-    </nav>
-    <header class="hero">
-        <h1>Gondviselés Gyógyszertár</h1>
-        <p>Orgovány, Kossuth Lajos u. 65.</p>
-    </header>
-    <section id="szolgaltatasok">
-        <h2 class="section-title">Szolgáltatások</h2>
-        <p>Hamarosan itt olvashatja kínálatunkat.</p>
-    </section>
-    <section id="rolunk">
-        <h2 class="section-title">Rólunk</h2>
-        <p>Patikánk elkötelezetten szolgálja a lakosság egészségét.</p>
-    </section>
-    <div id="terkep-szekcio">
-        <h2 class="section-title">Itt találsz minket</h2>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2744.155829986326!2d19.467431276856525!3d46.54460516029342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4743c3d5231c519d%3A0x6d36541f4095728a!2sGondvisel%C3%A9s%20Gy%C3%B3gyszert%C3%A1r!5e0!3m2!1shu!2shu!4v1700000000000!5m2!1shu!2shu" 
-                allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <div class="address-text">
-            <p><i class="fas fa-map-marker-alt" style="color: #e74c3c;"></i> 6077 Orgovány, Kossuth Lajos u. 65.</p>
-        </div>
-    </div>
-    <section id="kapcsolat">
-        <h2 class="section-title">Kapcsolat</h2>
-        <a href="https://www.facebook.com/gondviselesgyogyszertar/" target="_blank" class="facebook-link"><i class="fab fa-facebook-f"></i></a>
-    </section>
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menuList');
-            if (window.innerWidth <= 768) { menu.classList.toggle('active'); }
-        }
-    </script>
-</body>
-</html>
+# Gondviselés Gyógyszertár - Orgovány
+
+Ez a projekt a **Gondviselés Gyógyszertár** hivatalos, egyszerűsített bemutatkozó weboldala.
+
+## 🌐 Élő weboldal
+Az oldal megtekinthető az alábbi linken:
+[https://11117.github.io/gondviseles/](https://11117.github.io/gondviseles/)
+
+## 🛠 Technológiai részletek
+- **HTML5**: Az oldal szerkezete.
+- **CSS3**: Reszponzív megjelenés (mobilbarát kialakítás).
+- **FontAwesome**: Ikonok használata.
+- **Google Maps Embed**: Helyszín megjelenítése.
+
+## 📍 Elérhetőség
+- **Cím**: 6077 Orgovány, Kossuth Lajos u. 65.
+- **Facebook**: [Gondviselés Gyógyszertár](https://www.facebook.com/gondviselesgyogyszertar/)
+
+---
+*Készült: 2026*
