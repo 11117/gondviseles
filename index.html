@@ -336,12 +336,17 @@ Kedves Betegeinket!</p>
             </div>
 			
             <div class="contact-item">
+
                 <p>Kérdése van? Keressen minket bizalommal e-mailben!</p>
-                <a href="mailto:gyogyszertar76@gmail.com?subject=Webes kapcsolatfelvétel" class="contact-btn mail-color" title="E-mail küldése">
-					<i class="fas fa-envelope"></i>
-				</a>
-                    
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gyogyszertar76@gmail.com&su=Webes%20kapcsolatfelvétel" target="_blank" class="contact-btn mail-color" title="E-mail küldése">
+
+                    <i class="fas fa-envelope"></i>
+
+                </a>
+
                 <br><span style="margin-top: 10px; font-size: 0.85rem; color:#888";">gyogyszertar76@gmail.com</span>
+
             </div>
         </div>
         </div>
@@ -429,22 +434,31 @@ Kedves Betegeinket!</p>
             // --- 1. NYITVATARTÁS LOGIKA ---
             function updateStatus() {
                 const now = new Date();
-                const day = now.getDay(); 
-                const totalMins = now.getHours() * 60 + now.getMinutes();
+                const day = now.getDay(); // 0: Vasárnap, 1: Hétfő...
+                const hour = now.getHours();
+                const min = now.getMinutes();
+                const totalMins = hour * 60 + min;
 
                 const dot = document.getElementById('status-dot');
                 const text = document.getElementById('status-text');
                 const next = document.getElementById('next-open-text');
 
-                // Csak ha léteznek az elemek
+                const napok = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
+                
+                // Nyitvatartási idők percekben (8:00-13:00 és 13:30-16:30)
+                const nyitás1 = 480;  // 08:00
+                const zárás1 = 780;   // 13:00
+                const nyitás2 = 810;  // 13:30
+                const zárás2 = 990;   // 16:30
+
                 if (dot && text && next) {
                     document.querySelectorAll('.day-row').forEach(r => r.classList.remove('today'));
                     const todayRow = document.querySelector(`.day-row[data-day="${day}"]`);
                     if(todayRow) todayRow.classList.add('today');
 
                     let isOpen = false;
-                    if (day >= 1 && day <= 5) { // Hétfő-Péntek
-                        if ((totalMins >= 480 && totalMins < 780) || (totalMins >= 810 && totalMins < 990)) {
+                    if (day >= 1 && day <= 5) {
+                        if ((totalMins >= nyitás1 && totalMins < zárás1) || (totalMins >= nyitás2 && totalMins < zárás2)) {
                             isOpen = true;
                         }
                     }
@@ -458,10 +472,27 @@ Kedves Betegeinket!</p>
                         dot.className = "dot dot-closed";
                         text.innerText = "JELENLEG ZÁRVA";
                         text.style.color = "#c62828";
-                        next.innerText = "Legközelebbi nyitás: Hétfő 08:00";
+
+                        // Intelligens időkiszámítás
+                        let nextText = "";
+                        
+                        if (day >= 1 && day <= 5 && totalMins < nyitás1) {
+                            nextText = `Ma nyitás: 08:00`;
+                        } else if (day >= 1 && day <= 5 && totalMins >= zárás1 && totalMins < nyitás2) {
+                            nextText = `Ma nyitás: 13:30`;
+                        } else {
+                            // Következő munkanap keresése
+                            let nextDayIndex = (day + 1) % 7;
+                            while (nextDayIndex === 0 || nextDayIndex === 6) { // Szombat/Vasárnap átugrása
+                                nextDayIndex = (nextDayIndex + 1) % 7;
+                            }
+                            nextText = `Legközelebbi nyitás: ${napok[nextDayIndex]} 08:00`;
+                        }
+                        next.innerText = nextText;
                     }
                 }
             }
+                
 
             // --- 2. SÜTI RENDSZER ---
             const COOKIE_VERSION = "1"; // Emeltem a verzión, hogy biztosan megjelenjen most
