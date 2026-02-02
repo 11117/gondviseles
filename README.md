@@ -18,6 +18,7 @@ Az oldal megtekintésével bróbálkozzon újra az alábbi linken:
 ## 📍 Elérhetőség
 - **Cím**: 6077 Orgovány, Kossuth Lajos u. 65.
 - **Facebook**: [Gondviselés Gyógyszertár](https://www.facebook.com/gondviselesgyogyszertar/)
+- **Telefon**: +36 76 591 020
 
 ---
 *Készült: 2026*
