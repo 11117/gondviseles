@@ -1,7 +1,7 @@
 # Gondviselés Gyógyszertár - Orgovány
 Ez az oldal a Gondviselés Gyógyszertár hivatalos weboldalának egyszerűsített weboldala.
 
-Ha huzamosabb ideig nem frissül az oldal, valószínüleg –🛠️**karbantartás zajlik**, vagy valami ⁉️**hiba léphetett fel**.
+Ha huzamosabb ideig nem frissül az oldal, valószínüleg 🛠️**karbantartás zajlik**, vagy valami ⁉️**hiba léphetett fel**.
 
 Kérjük vegye fel a kapcsolatot az alábbi telefonszámon: +36 76 591 020
 
