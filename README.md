@@ -6,7 +6,7 @@ Ez azért lehet, mert valószínüleg 🛠️**karbantartás zajlik**, vagy vala
 ☎️ Kérdés esetén kérjük vegye fel a kapcsolatot az alábbi telefonszámon: <strong>+36 76 591 020</strong>
 
 ## 🌐 Élő weboldal
-Az oldal megtekintésével bróbálkozzon újra az alábbi linken:
+Az oldal megtekintésével újra próbálkozhat az alábbi linken:
 [https://11117.github.io/gondviseles/](https://11117.github.io/gondviseles/)
 
 ## 🛠 Technológiai részletek
