@@ -1,5 +1,5 @@
 # Gondviselés Gyógyszertár - Orgovány
-Ön most a Gondviselés Gyógyszertár hivatalos weboldalának egyszerűsített weboldalát6 látja.
+Ön most a Gondviselés Gyógyszertár hivatalos weboldalának egyszerűsített weboldalát látja.
 
 Ez azért lehet, mert valószínüleg 🛠️**karbantartás zajlik**, vagy valami ⁉️**hiba léphetett fel**.
 
