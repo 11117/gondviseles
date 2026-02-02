@@ -3,7 +3,7 @@
 
 Ez azért lehet, mert valószínüleg 🛠️**karbantartás zajlik**, vagy valami ⁉️**hiba léphetett fel**.
 
-☎️ Kérdés esetén kérjük vegye fel a kapcsolatot az alábbi telefonszámon: +36 76 591 020
+☎️ Kérdés esetén kérjük vegye fel a kapcsolatot az alábbi telefonszámon: <strong>+36 76 591 020</strong>
 
 ## 🌐 Élő weboldal
 Az oldal megtekintésével bróbálkozzon újra az alábbi linken:
