@@ -21,4 +21,4 @@ Az oldal megtekintésével újra próbálkozhat az alábbi linken:
 - **Google Maps Embed**: Helyszín megjelenítése.
 
 ---
-*Készült: 2026*
+*Készült: © 2026 Minden jog fenntartva.*
