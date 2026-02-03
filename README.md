@@ -9,16 +9,16 @@ Ez azért lehet, mert valószínüleg 🛠️**karbantartás zajlik**, vagy vala
 Az oldal megtekintésével újra próbálkozhat az alábbi linken:
 [https://11117.github.io/gondviseles/](https://11117.github.io/gondviseles/)
 
+## 📍 Elérhetőség
+- **Cím**: 6077 Orgovány, Kossuth Lajos u. 65.
+- **Facebook**: [Gondviselés Gyógyszertár](https://www.facebook.com/gondviselesgyogyszertar/)
+- **Telefon**: +36 76 591 020
+
 ## 🛠 Technológiai részletek
 - **HTML5**: Az oldal szerkezete.
 - **CSS3**: Reszponzív megjelenés (mobilbarát kialakítás).
 - **FontAwesome**: Ikonok használata.
 - **Google Maps Embed**: Helyszín megjelenítése.
-
-## 📍 Elérhetőség
-- **Cím**: 6077 Orgovány, Kossuth Lajos u. 65.
-- **Facebook**: [Gondviselés Gyógyszertár](https://www.facebook.com/gondviselesgyogyszertar/)
-- **Telefon**: +36 76 591 020
 
 ---
 *Készült: 2026*
